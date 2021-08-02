@@ -15,7 +15,7 @@ classes = ["mesure"]
 COLORS = np.random.uniform(0, 255, size=(len(classes), 3))
 
 # read pre-trained model and config file
-net = cv2.dnn.readNet("yolov4_custom_best.weights", "yolov4_custom.cfg")
+net = cv2.dnn.readNetFromDarknet("yolov4_custom.cfg","yolov4_custom_best.weights")
 def get_output_layers(net):
     
     layer_names = net.getLayerNames()
