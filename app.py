@@ -121,9 +121,6 @@ def detect():
     with open('postImage.png', "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
     return jsonify({'detection':str(base64.b64encode(encoded_string))})
-    # cd = 'attachment; image=result.csv'
-    # response.headers['Content-Disposition'] = cd
-    # response.mimetype = 'text/csv'
 
 
 
