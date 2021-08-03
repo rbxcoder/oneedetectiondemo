@@ -102,7 +102,7 @@ def run(image):
     except:
         pass
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/api/detection', methods=['POST'])
 def detect():
     try:
         imageb = request.get_json()['image']
