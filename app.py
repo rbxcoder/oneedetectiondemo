@@ -16,6 +16,7 @@ COLORS = np.random.uniform(0, 255, size=(len(classes), 3))
 
 # read pre-trained model and config file
 net = cv2.dnn.readNet("yolov4_custom_best.weights","yolov4_custom.cfg")
+
 def get_output_layers(net):
     layer_names = net.getLayerNames()
     output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
