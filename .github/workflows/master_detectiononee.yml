@@ -21,12 +21,18 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: '3.9'
-
+      
       - name: Create and start virtual environment
         run: |
           python -m venv venv
           source venv/bin/activate
-      
+      - name: Checkout github repo (+ download lfs dependencies)
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Checkout LFS objects
+        run: git lfs checkout
+        
       - name: Install dependencies
         run: pip install -r requirements.txt
         
