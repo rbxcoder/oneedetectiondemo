@@ -120,7 +120,7 @@ def detect():
             encoded_string = base64.b64encode(image_file.read())
         return jsonify({'detection':str(base64.b64encode(encoded_string))})
     except:
-        return jsonify({'message':'error image format!'})
+        return jsonify({'message':'error image detection!'})
 
 
 
