@@ -3,7 +3,7 @@ import numpy as np
 import base64
 from flask import Flask, json, request, jsonify, Response,make_response
 from flask_cors import CORS
- #test
+#test
 app = Flask(__name__)
 CORS(app)
 app.config['DEBUG'] = True
@@ -112,17 +112,19 @@ def detect():
         
     except:
         return jsonify({'message':'error image format!'})
-
-    image=cv2.imread('getImage.png')
-    detected_image = run(image)
-    cv2.imwrite('postImage.png',detected_image)
-    with open('postImage.png', "rb") as image_file:
-        encoded_string = base64.b64encode(image_file.read())
-    return jsonify({'detection':str(base64.b64encode(encoded_string))})
+    try:
+        image=cv2.imread('getImage.png')
+        detected_image = run(image)
+        cv2.imwrite('postImage.png',detected_image)
+        with open('postImage.png', "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read())
+        return jsonify({'detection':str(base64.b64encode(encoded_string))})
+    except:
+        return jsonify({'message':'error image format!'})
 
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run()
 
 
