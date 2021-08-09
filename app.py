@@ -3,7 +3,7 @@ import numpy as np
 import base64
 from flask import Flask, json, request, jsonify, Response,make_response
 from flask_cors import CORS
-
+ #test
 app = Flask(__name__)
 CORS(app)
 app.config['DEBUG'] = True
