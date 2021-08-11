@@ -118,7 +118,7 @@ def detect():
         cv2.imwrite('postImage.png',detected_image)
         with open('postImage.png', "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read())
-        return jsonify({'detection':str(base64.b64encode(encoded_string))})
+        return jsonify({'detection':str(encoded_string,'utf-8')})
     except:
         return jsonify({'message':'error image detection!'})
 
