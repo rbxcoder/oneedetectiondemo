@@ -99,7 +99,6 @@ def ocr(image):
         # cv2.waitKey(0)
         xlist.append((x,class_ids[i],confidences[i]))
     xlist.sort(key=lambda tup: tup[0])
-    print(xlist)
     ocrlist=[]
     for j in xlist:
         ocrlist.append(classes[j[1]])
