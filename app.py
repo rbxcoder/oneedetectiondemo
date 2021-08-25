@@ -26,11 +26,13 @@ def detect():
     try:
         image=cv2.imread('getImage.png')
         detected_image = detection(image)
-        index=ocr(detected_image)
+        index,scores=ocr(detected_image)
+        if not index:
+            return jsonify({'message':'ocr nonfunctional'})
         cv2.imwrite('postImage.png',detected_image)
         with open('postImage.png', "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read())
-        return jsonify({'index':index}) ##'detection':str(encoded_string,'utf-8')
+        return jsonify({'index':index,'scores':scores}) ##'detection':str(encoded_string,'utf-8')
     except:
         return jsonify({'message':'ocr or detection error'})
 

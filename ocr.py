@@ -100,13 +100,15 @@ def ocr(image):
         xlist.append((x,class_ids[i],confidences[i]))
     xlist.sort(key=lambda tup: tup[0])
     ocrlist=[]
+    scores=[]
     for j in xlist:
         ocrlist.append(classes[j[1]])
+        scores.append((classes[j[1]],j[2]))
     ocr=''.join(ocrlist)
     # release resources
     # cv2.putText(image, ''.join(ocr), (5,7), cv2.FONT_HERSHEY_SIMPLEX, 0.3, (255,0,0), 1)
     try:
-        return ocr
+        return ocr,scores
     except:
         pass
 
